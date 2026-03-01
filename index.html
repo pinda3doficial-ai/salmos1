@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Seu Sorriso é Nossa Missão - França Odontologia</title>
+    <style>
+        /* Estilos Adaptados para o tema Odontologia/Carinho (Tons de Azul e Dourado Natalino) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fce4ec; /* Rosa/Pérola Suave (Toque de Carinho) */
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            margin: 20px;
+            animation: fadeIn 1s ease-in-out;
+            border: 3px solid #005f73; /* Azul Escuro Institucional */
+        }
+        #mensagem {
+            font-size: 1.6em;
+            color: #005f73; /* Azul Escuro Forte */
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-style: italic;
+            line-height: 1.5;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            color: #0a9396; /* Azul Água Institucional */
+            margin-bottom: 5px;
+            font-size: 2em;
+        }
+        .day-indicator {
+            color: #e9d8a6; /* Dourado (Toque de Natal/Fim de Ano) */
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        small {
+            color: #424242;
+            display: block;
+            margin-top: 15px;
+        }
+        .clinic-name {
+            font-weight: bold;
+            color: #005f73;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🌟 Salmo Diário para Seu Coração 🌟</h1>
+    <div class="day-indicator" id="dia-do-ano">Carregando mensagem...</div>
+    <p id="mensagem">Aguarde, seu versículo do dia está chegando...</p>
+    <div class="clinic-name">_Com carinho, da sua equipe Pinda 3D_</div>
+    <small>Que a paz do Senhor guarde seu coração e seu sorriso!</small>
+</div>
+
+<script>
+    
+    // ====================================================================
+    // 🚩 PASSO 1: EDITE O NOME AQUI! 🚩
+    // Insira o nome do paciente, ou "Querido(a) Paciente" se for genérico
+    // ====================================================================
+    const nomeDoPresenteado = "Filho(a) de Deus"; 
+    // ====================================================================
+
+    // --- 2. A LISTA DE FRASES (365) - SALMOS BÍBLICOS ---
+    const frasesSalmos = [
+        "Salmos 1:1-2 - Bem-aventurado o homem que não anda no conselho dos ímpios, não se detém no caminho dos pecadores, nem se assenta na roda dos escarnecedores. Antes, o seu prazer está na lei do Senhor, e na sua lei medita de dia e de noite.", // Dia 1
+        "Salmos 2:11 - Servi ao Senhor com temor e alegrai-vos nele com tremor.", // Dia 2
+        "Salmos 3:5 - Eu me deito e pego no sono; acordo, porque o Senhor me sustenta.", // Dia 3
+        "Salmos 4:8 - Em paz me deito e logo pego no sono, porque só tu, Senhor, me fazes habitar em segurança.", // Dia 4
+        "Salmos 5:3 - Pela manhã, Senhor, ouves a minha voz; pela manhã te apresento a minha oração e fico esperando.", // Dia 5
+        "Salmos 6:9 - O Senhor ouviu a minha súplica; o Senhor aceita a minha oração.", // Dia 6
+        "Salmos 7:10 - O meu escudo está em Deus, que salva os retos de coração.", // Dia 7
+        "Salmos 8:1 - Ó Senhor, Senhor nosso, quão admirável é o teu nome em toda a terra!", // Dia 8
+        "Salmos 9:1 - Louvar-te-ei, Senhor, de todo o meu coração; contarei todas as tuas maravilhas.", // Dia 9
+        "Salmos 10:17 - Senhor, tu ouviste os desejos dos mansos; confortarás os seus corações; inclinarás o teu ouvido.", // Dia 10
+        "Salmos 11:7 - Porque o Senhor é justo; ele ama a justiça; os retos verão o seu rosto.", // Dia 11
+        "Salmos 12:6 - As palavras do Senhor são palavras puras, como prata refinada em fornalha de barro, purificada sete vezes.", // Dia 12
+        "Salmos 13:5 - Eu, porém, confio na tua benignidade; o meu coração se regozija na tua salvação.", // Dia 13
+        "Salmos 14:5 - Ali haverá grande pavor, pois Deus está com a geração do justo.", // Dia 14
+        "Salmos 15:1-2 - Senhor, quem habitará no teu tabernáculo? Quem morará no teu santo monte? Aquele que anda sinceramente, e pratica a justiça, e fala a verdade no seu coração.", // Dia 15
+        "Salmos 16:8 - Tenho posto o Senhor continuamente diante de mim; por isso que ele está à minha mão direita, nunca vacilarei.", // Dia 16
+        "Salmos 17:6 - Eu te invoquei, ó Deus, pois me queres ouvir; inclina para mim os teus ouvidos, e escuta as minhas palavras.", // Dia 17
+        "Salmos 18:2 - O Senhor é a minha rocha, a minha fortaleza e o meu libertador; o meu Deus, a minha rocha, em quem me refugio; o meu escudo, a força da minha salvação e o meu alto refúgio.", // Dia 18
+        "Salmos 19:1 - Os céus declaram a glória de Deus e o firmamento anuncia a obra das suas mãos.", // Dia 19
+        "Salmos 20:7 - Uns confiam em carros, outros em cavalos; nós, porém, nos gloriaremos no nome do Senhor, nosso Deus.", // Dia 20
+        "Salmos 21:13 - Exalta-te, Senhor, na tua força; então cantaremos e louvaremos o teu poder.", // Dia 21
+        "Salmos 22:4 - Em ti confiaram nossos pais; confiaram, e tu os livraste.", // Dia 22
+        "Salmos 23:1 - O Senhor é o meu pastor; nada me faltará.", // Dia 23
+        "Salmos 24:1 - Do Senhor é a terra e a sua plenitude; o mundo e aqueles que nele habitam.", // Dia 24
+        "Salmos 25:4-5 - Faze-me conhecer os teus caminhos, Senhor; ensina-me as tuas veredas. Guia-me na tua verdade e ensina-me, pois tu és o Deus da minha salvação; em ti espero todo o dia.", // Dia 25
+        "Salmos 26:12 - O meu pé está firme em terreno plano; nas congregações bendirei ao Senhor.", // Dia 26
+        "Salmos 27:1 - O Senhor é a minha luz e a minha salvação; a quem temerei? O Senhor é a força da minha vida; de quem me recearei?", // Dia 27
+        "Salmos 28:7 - O Senhor é a minha força e o meu escudo; nele confiou o meu coração, e fui socorrido; por isso o meu coração salta de prazer, e com o meu cântico o louvarei.", // Dia 28
+        "Salmos 29:11 - O Senhor dará força ao seu povo; o Senhor abençoará o seu povo com paz.", // Dia 29
+        "Salmos 30:5 - Porque a sua ira dura só um momento; no seu favor está a vida. O choro pode durar uma noite, mas a alegria vem pela manhã.", // Dia 30
+        "Salmos 31:24 - Esforçai-vos, e anime-se o vosso coração, vós todos que esperais no Senhor.", // Dia 31
+        "Salmos 32:8 - Instruir-te-ei e ensinar-te-ei o caminho que deves seguir; guiar-te-ei com os meus olhos.", // Dia 32
+        "Salmos 33:4 - Porque a palavra do Senhor é reta, e todas as suas obras são fiéis.", // Dia 33
+        "Salmos 34:4 - Busquei ao Senhor, e ele me respondeu; livrou-me de todos os meus temores.", // Dia 34
+        "Salmos 35:9 - E a minha alma se alegrará no Senhor; alegrar-se-á na sua salvação.", // Dia 35
+        "Salmos 36:7 - Quão preciosa é, ó Deus, a tua benignidade! Por isso os filhos dos homens se abrigam à sombra das tuas asas.", // Dia 36
+        "Salmos 37:4 - Deleita-te também no Senhor, e ele te concederá os desejos do teu coração.", // Dia 37
+        "Salmos 38:15 - Porque em ti, Senhor, espero; tu responderás, Senhor, Deus meu.", // Dia 38
+        "Salmos 39:7 - Agora, pois, Senhor, que espero eu? A minha esperança está em ti.", // Dia 39
+        "Salmos 40:1-2 - Esperei com paciência no Senhor, e ele se inclinou para mim e ouviu o meu clamor. Tirou-me de um lago horrível, de um charco de lodo; pôs os meus pés sobre uma rocha, firmou os meus passos.", // Dia 40
+        "Salmos 41:1-2 - Bem-aventurado é aquele que considera o pobre; o Senhor o livrará no dia do mal. O Senhor o livrará, e o conservará em vida; será abençoado na terra, e tu não o entregarás à vontade dos seus inimigos.", // Dia 41
+        "Salmos 42:5 - Por que estás abatida, ó minha alma, e por que te perturbas dentro de mim? Espera em Deus, pois ainda o louvarei pela salvação da sua face.", // Dia 42
+        "Salmos 43:5 - Por que estás abatida, ó minha alma, e por que te perturbas dentro de mim? Espera em Deus, pois ainda o louvarei, a ele que é o meu socorro presente e o meu Deus.", // Dia 43
+        "Salmos 44:8 - Em Deus nos gloriamos todo o dia, e louvamos o teu nome para sempre.", // Dia 44
+        "Salmos 45:17 - Farei lembrado o teu nome de geração em geração; por isso os povos te louvarão eternamente.", // Dia 45
+        "Salmos 46:1 - Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia.", // Dia 46
+        "Salmos 47:1 - Batei palmas, todos os povos; celebrai a Deus com voz de triunfo.", // Dia 47
+        "Salmos 48:14 - Porque este Deus é o nosso Deus para sempre; ele será nosso guia até à morte.", // Dia 48
+        "Salmos 49:15 - Mas Deus remirá a minha alma do poder da morte, pois me receberá.", // Dia 49
+        "Salmos 50:23 - Quem me oferece sacrifício de louvor me glorificará; e àquele que ordena o seu caminho eu mostrarei a salvação de Deus.", // Dia 50
+        "Salmos 51:10 - Cria em mim, ó Deus, um coração puro e renova em mim um espírito reto.", // Dia 51
+        "Salmos 52:8 - Mas eu sou como a oliveira verde na casa de Deus; confio na misericórdia de Deus para sempre e eternamente.", // Dia 52
+        "Salmos 53:6 - Oh, se já viesse de Sião a salvação de Israel! Quando Deus fizer voltar os cativos do seu povo, então se regozijará Jacó e Israel se alegrará.", // Dia 53
+        "Salmos 54:4 - Eis que Deus é o meu ajudador; o Senhor está com aqueles que sustêm a minha alma.", // Dia 54
+        "Salmos 55:22 - Lança o teu cuidado sobre o Senhor, e ele te susterá; nunca permitirá que o justo seja abalado.", // Dia 55
+        "Salmos 56:3 - Em qualquer tempo em que eu temer, confiarei em ti.", // Dia 56
+        "Salmos 57:2 - Clamarei ao Deus altíssimo, ao Deus que por mim tudo executa.", // Dia 57
+        "Salmos 58:11 - E os homens dirão: Deveras há uma recompensa para o justo; deveras há um Deus que julga na terra.", // Dia 58
+        "Salmos 59:16 - Eu, porém, cantarei a tua força; pela manhã louvarei com alegria a tua misericórdia; porquanto tu foste o meu alto refúgio e proteção no dia da minha angústia.", // Dia 59
+        "Salmos 60:12 - Com Deus faremos proezas, porque ele é que pisará os nossos inimigos.", // Dia 60
+        "Salmos 61:2 - Desde a extremidade da terra clamo a ti, quando o meu coração desfalece; leva-me para a rocha que é mais alta do que eu.", // Dia 61
+        "Salmos 62:1 - A minha alma espera somente em Deus; dele vem a minha salvação.", // Dia 62
+        "Salmos 63:3 - Porque a tua benignidade é melhor do que a vida; os meus lábios te louvarão.", // Dia 63
+        "Salmos 64:10 - Alegrar-se-á o justo no Senhor e confiará nele; e todos os retos de coração se gloriarão.", // Dia 64
+        "Salmos 65:4 - Bem-aventurado aquele que tu escolhes e fazes chegar a ti, para que habite em teus átrios; nós seremos satisfeitos com a bondade da tua casa e do teu santo templo.", // Dia 65
+        "Salmos 66:16 - Vinde e ouvi, todos vós que temeis a Deus, e eu contarei o que ele tem feito à minha alma.", // Dia 66
+        "Salmos 67:1 - Deus tenha misericórdia de nós e nos abençoe; e faça resplandecer o seu rosto sobre nós.", // Dia 67
+        "Salmos 68:19 - Bendito seja o Senhor, que diariamente leva a nossa carga; Deus é a nossa salvação.", // Dia 68
+        "Salmos 69:13 - Eu, porém, faço a minha oração a ti, Senhor, num tempo aceitável; ó Deus, ouve-me segundo a grandeza da tua misericórdia, segundo a verdade da tua salvação.", // Dia 69
+        "Salmos 70:4 - Alegrem-se e regozijem-se em ti todos os que te buscam; e os que amam a tua salvação digam continuamente: Engrandecido seja Deus.", // Dia 70
+        "Salmos 71:5 - Porque tu és a minha esperança, Senhor Deus, a minha confiança desde a minha mocidade.", // Dia 71
+        "Salmos 72:18 - Bendito seja o Senhor Deus, o Deus de Israel, que só ele faz maravilhas.", // Dia 72
+        "Salmos 73:28 - Mas, para mim, bom é aproximar-me de Deus; pus a minha confiança no Senhor Deus, para anunciar todas as tuas obras.", // Dia 73
+        "Salmos 74:12 - Todavia, Deus é o meu Rei desde a antiguidade, operando salvação no meio da terra.", // Dia 74
+        "Salmos 75:1 - Louvar-te-emos, ó Deus, louvar-te-emos, porque o teu nome está perto; assim como também são contadas as tuas maravilhas.", // Dia 75
+        "Salmos 76:1 - Conhecido é Deus em Judá; grande é o seu nome em Israel.", // Dia 76
+        "Salmos 77:14 - Tu és o Deus que fazes maravilhas; tu fizeste notória a tua força entre os povos.", // Dia 77
+        "Salmos 78:4 - Não os encobriremos aos seus filhos, mostrando à geração vindoura os louvores do Senhor, assim como a sua força e as maravilhas que fez.", // Dia 78
+        "Salmos 79:9 - Ajuda-nos, ó Deus da nossa salvação, pela glória do teu nome; e livra-nos e perdoa os nossos pecados por amor do teu nome.", // Dia 79
+        "Salmos 80:19 - Senhor, Deus dos Exércitos, faze-nos tornar; faze resplandecer o teu rosto, e seremos salvos.", // Dia 80
+        "Salmos 81:1 - Cantai alegremente a Deus, nossa força; celebrai o Deus de Jacó.", // Dia 81
+        "Salmos 82:8 - Levanta-te, ó Deus, julga a terra, pois tu possuis todas as nações.", // Dia 82
+        "Salmos 83:18 - Para que saibam que tu, a quem só pertence o nome de Senhor, és o Altíssimo sobre toda a terra.", // Dia 83
+        "Salmos 84:11 - Porque o Senhor Deus é um sol e escudo; o Senhor dará graça e glória; não retirará bem algum aos que andam na retidão.", // Dia 84
+        "Salmos 85:9 - Certamente a sua salvação está perto daqueles que o temem, para que a glória habite na nossa terra.", // Dia 85
+        "Salmos 86:5 - Porque tu, Senhor, és bom, e pronto a perdoar, e abundante em benignidade para com todos os que te invocam.", // Dia 86
+        "Salmos 87:3 - Coisas gloriosas se dizem de ti, ó cidade de Deus.", // Dia 87
+        "Salmos 88:13 - Eu, porém, Senhor, clamo a ti, e de manhã a minha oração te saúda.", // Dia 88
+        "Salmos 89:1 - Cantarei para sempre as benignidades do Senhor; com a minha boca manifestarei a tua fidelidade de geração em geração.", // Dia 89
+        "Salmos 90:17 - E seja sobre nós a formosura do Senhor, nosso Deus, e confirma sobre nós a obra das nossas mãos; sim, confirma a obra das nossas mãos.", // Dia 90
+        "Salmos 91:1-2 - Aquele que habita no esconderijo do Altíssimo, à sombra do Onipotente descansará. Direi do Senhor: Ele é o meu refúgio e a minha fortaleza, o meu Deus, em quem confio.", // Dia 91
+        "Salmos 92:1-2 - Bom é louvar ao Senhor e cantar louvores ao teu nome, ó Altíssimo, para de manhã anunciar a tua benignidade e, durante as noites, a tua fidelidade.", // Dia 92
+        "Salmos 93:1 - O Senhor reina; está vestido de majestade. O Senhor se revestiu e cingiu de poder; o mundo também está firmado e não será abalado.", // Dia 93
+        "Salmos 94:19 - Na multidão dos meus pensamentos dentro de mim, as tuas consolações recrearam a minha alma.", // Dia 94
+        "Salmos 95:1 - Vinde, cantemos ao Senhor; jubilemos à rocha da nossa salvação.", // Dia 95
+        "Salmos 96:2 - Cantai ao Senhor, bendizei o seu nome; anunciai a sua salvação de dia em dia.", // Dia 96
+        "Salmos 97:11 - Luz semeada ao justo, e alegria ao reto de coração.", // Dia 97
+        "Salmos 98:1 - Cantai ao Senhor um cântico novo, porque ele fez maravilhas; a sua destra e o seu braço santo lhe alcançaram a salvação.", // Dia 98
+        "Salmos 99:5 - Exaltai ao Senhor, nosso Deus, e prostrai-vos diante do escabelo de seus pés, porque ele é santo.", // Dia 99
+        "Salmos 100:1-2 - Celebrai com júbilo ao Senhor, todas as terras. Servi ao Senhor com alegria e apresentai-vos a ele com canto.", // Dia 100
+        "Salmos 101:1 - Cantarei a benignidade e o juízo; a ti, Senhor, cantarei.", // Dia 101
+        "Salmos 102:12 - Mas tu, Senhor, permanecerás para sempre, e a tua memória, de geração em geração.", // Dia 102
+        "Salmos 103:1 - Bendize, ó minha alma, ao Senhor, e tudo o que há em mim bendiga o seu santo nome.", // Dia 103
+        "Salmos 104:1 - Bendize, ó minha alma, ao Senhor! Senhor, Deus meu, tu és magnificentíssimo; estás vestido de glória e de majestade.", // Dia 104
+        "Salmos 105:1 - Louvai ao Senhor, invocai o seu nome; fazei conhecidas as suas obras entre os povos.", // Dia 105
+        "Salmos 106:1 - Louvai ao Senhor. Oh, dai graças ao Senhor, porque ele é bom, porque a sua benignidade dura para sempre.", // Dia 106
+        "Salmos 107:1 - Louvai ao Senhor, porque ele é bom, porque a sua benignidade dura para sempre.", // Dia 107
+        "Salmos 108:3 - Louvar-te-ei, ó Senhor, entre os povos, e cantar-te-ei louvores entre as nações.", // Dia 108
+        "Salmos 109:30 - Louvarei muito ao Senhor com a minha boca; no meio de muitos eu o louvarei.", // Dia 109
+        "Salmos 110:3 - O teu povo será mui voluntário no dia do teu poder; nos santos ornamentos, desde a madre da alva, tu tens o orvalho da tua mocidade.", // Dia 110
+        "Salmos 111:1 - Louvarei ao Senhor de todo o meu coração, na assembleia dos justos e na congregação.", // Dia 111
+        "Salmos 112:1 - Louvai ao Senhor. Bem-aventurado o homem que teme ao Senhor, que em seus mandamentos tem grande prazer.", // Dia 112
+        "Salmos 113:3 - Desde o nascimento do sol até ao ocaso, seja louvado o nome do Senhor.", // Dia 113
+        "Salmos 114:7 - Treme, terra, na presença do Senhor, na presença do Deus de Jacó.", // Dia 114
+        "Salmos 115:1 - Não a nós, Senhor, não a nós, mas ao teu nome dá glória, por amor da tua benignidade e da tua verdade.", // Dia 115
+        "Salmos 116:1-2 - Amo ao Senhor, porque ele ouviu a minha voz e a minha súplica. Porque inclinou a mim os seus ouvidos, invocá-lo-ei enquanto viver.", // Dia 116
+        "Salmos 117:1-2 - Louvai ao Senhor, todas as nações; louvai-o, todos os povos. Porque a sua benignidade é grande para conosco, e a verdade do Senhor dura para sempre. Louvai ao Senhor.", // Dia 117
+        "Salmos 118:24 - Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.", // Dia 118
+        "Salmos 119:1 - Bem-aventurados os retos em seus caminhos, que andam na lei do Senhor.", // Dia 119
+        "Salmos 120:1 - Na minha angústia clamei ao Senhor, e ele me ouviu.", // Dia 120
+        "Salmos 121:1-2 - Levantarei os meus olhos para os montes, de onde vem o meu socorro. O meu socorro vem do Senhor que fez o céu e a terra.", // Dia 121
+        "Salmos 122:1 - Alegrei-me quando me disseram: Vamos à casa do Senhor.", // Dia 122
+        "Salmos 123:1 - A ti levanto os meus olhos, ó tu que habitas nos céus.", // Dia 123
+        "Salmos 124:8 - O nosso socorro está no nome do Senhor, criador do céu e da terra.", // Dia 124
+        "Salmos 125:1-2 - Os que confiam no Senhor serão como o monte de Sião, que não se abala, mas permanece para sempre. Como estão os montes ao redor de Jerusalém, assim o Senhor está ao redor do seu povo, desde agora e para sempre.", // Dia 125
+        "Salmos 126:3 - O Senhor fez grandes coisas por nós, pelas quais estamos alegres.", // Dia 126
+        "Salmos 127:1 - Se o Senhor não edificar a casa, em vão trabalham os que a edificam; se o Senhor não guardar a cidade, em vão vigia a sentinela.", // Dia 127
+        "Salmos 128:1 - Bem-aventurado aquele que teme ao Senhor e anda nos seus caminhos.", // Dia 128
+        "Salmos 129:4 - O Senhor é justo; cortou as cordas dos ímpios.", // Dia 129
+        "Salmos 130:5 - Aguardo ao Senhor; a minha alma o aguarda, e espero na sua palavra.", // Dia 130
+        "Salmos 131:3 - Espera, ó Israel, no Senhor, desde agora e para sempre.", // Dia 131
+        "Salmos 132:15 - Abençoarei abundantemente o seu mantimento; fartarei de pão os seus pobres.", // Dia 132
+        "Salmos 133:1 - Oh! Quão bom e quão suave é que os irmãos vivam em união!", // Dia 133
+        "Salmos 134:1 - Eis aqui, bendizei ao Senhor, todos vós, servos do Senhor, que assistis na casa do Senhor todas as noites.", // Dia 134
+        "Salmos 135:3 - Louvai ao Senhor, porque o Senhor é bom; cantai louvores ao seu nome, porque é suave.", // Dia 135
+        "Salmos 136:1 - Louvai ao Senhor, porque ele é bom, porque a sua benignidade dura para sempre.", // Dia 136
+        "Salmos 137:4 - Como cantaremos a canção do Senhor em terra estranha?", // Dia 137
+        "Salmos 138:1 - Louvar-te-ei com todo o meu coração; diante dos deuses te cantarei louvores.", // Dia 138
+        "Salmos 139:1-2 - Senhor, tu me sondaste e me conheces. Tu sabes o meu assentar e o meu levantar; de longe entendes o meu pensamento.", // Dia 139
+        "Salmos 140:7 - Senhor Deus, força da minha salvação, tu cobriste a minha cabeça no dia da batalha.", // Dia 140
+        "Salmos 141:8 - Mas os meus olhos estão fitos em ti, ó Senhor Deus; em ti confio; não desnudes a minha alma.", // Dia 141
+        "Salmos 142:5 - Clamei a ti, Senhor; disse: Tu és o meu refúgio, a minha porção na terra dos viventes.", // Dia 142
+        "Salmos 143:8 - Faze-me ouvir a tua benignidade pela manhã, pois em ti confio; faze-me saber o caminho que devo seguir, porque a ti levanto a minha alma.", // Dia 143
+        "Salmos 144:1 - Bendito seja o Senhor, minha rocha, que ensina as minhas mãos para a guerra e os meus dedos para a batalha.", // Dia 144
+        "Salmos 145:1-2 - Exaltar-te-ei, ó Deus, meu Rei, e bendirei o teu nome para todo o sempre. Cada dia te bendirei e louvarei o teu nome para todo o sempre.", // Dia 145
+        "Salmos 146:2 - Louvarei ao Senhor enquanto viver; cantarei louvores ao meu Deus enquanto existir.", // Dia 146
+        "Salmos 147:1 - Louvai ao Senhor, porque é bom cantar louvores ao nosso Deus; porque é agradável, e decoroso é o louvor.", // Dia 147
+        "Salmos 148:1 - Louvai ao Senhor. Louvai ao Senhor desde os céus; louvai-o nas alturas.", // Dia 148
+        "Salmos 149:1 - Louvai ao Senhor. Cantai ao Senhor um cântico novo e o seu louvor na congregação dos santos.", // Dia 149
+        "Salmos 150:1-2 - Louvai ao Senhor. Louvai a Deus no seu santuário; louvai-o no firmamento do seu poder. Louvai-o pelos seus atos poderosos; louvai-o conforme a excelência da sua grandeza.", // Dia 150
+        "Salmos 119:9 - Como purificará o jovem o seu caminho? Observando-o conforme a tua palavra.", // Dia 151
+        "Salmos 119:11 - Escondi a tua palavra no meu coração, para eu não pecar contra ti.", // Dia 152
+        "Salmos 119:18 - Desvenda os meus olhos, para que veja as maravilhas da tua lei.", // Dia 153
+        "Salmos 119:25 - A minha alma está pegada ao pó; vivifica-me segundo a tua palavra.", // Dia 154
+        "Salmos 119:28 - A minha alma consome-se de tristeza; fortalece-me segundo a tua palavra.", // Dia 155
+        "Salmos 119:36 - Inclina o meu coração aos teus testemunhos e não à cobiça.", // Dia 156
+        "Salmos 119:50 - Esta é a minha consolação na minha aflição, porque a tua palavra me vivificou.", // Dia 157
+        "Salmos 119:58 - De todo o meu coração tenho buscado a tua face; não me desampares, segundo a tua benignidade.", // Dia 158
+        "Salmos 119:71 - Foi-me bom ter sido afligido, para que aprendesse os teus estatutos.", // Dia 159
+        "Salmos 119:76 - Seja, pois, a tua benignidade a minha consolação, conforme a tua palavra ao teu servo.", // Dia 160
+        "Salmos 119:89 - Para sempre, ó Senhor, a tua palavra permanece no céu.", // Dia 161
+        "Salmos 119:97 - Oh! Quanto amo a tua lei! É a minha meditação todo o dia.", // Dia 162
+        "Salmos 119:105 - Lâmpada para os meus pés é a tua palavra e luz para o meu caminho.", // Dia 163
+        "Salmos 119:114 - Tu és o meu refúgio e o meu escudo; espero na tua palavra.", // Dia 164
+        "Salmos 119:130 - A entrada das tuas palavras dá luz; dá entendimento aos símplices.", // Dia 165
+        "Salmos 119:133 - Ordena os meus passos na tua palavra, e não se apodere de mim iniquidade alguma.", // Dia 166
+        "Salmos 119:140 - Mui pura é a tua palavra; por isso, o teu servo a ama.", // Dia 167
+        "Salmos 119:165 - Muita paz têm os que amam a tua lei, e para eles não há tropeço.", // Dia 168
+        "Salmos 119:176 - Desgarrei-me como uma ovelha perdida; busca o teu servo, pois não me esqueci dos teus mandamentos.", // Dia 169
+        "Salmos 25:7 - Não te lembres dos pecados da minha mocidade, nem das minhas transgressões; mas, segundo a tua misericórdia, lembra-te de mim, pela tua bondade, ó Senhor.", // Dia 170
+        "Salmos 25:11 - Por amor do teu nome, Senhor, perdoa a minha iniquidade, pois é grande.", // Dia 171
+        "Salmos 25:14 - O segredo do Senhor é para os que o temem, e ele lhes fará saber o seu concerto.", // Dia 172
+        "Salmos 25:20 - Guarda a minha alma e livra-me; não me deixes envergonhado, porquanto em ti confio.", // Dia 173
+        "Salmos 26:2 - Examina-me, Senhor, e prova-me; esquadrinha os meus rins e o meu coração.", // Dia 174
+        "Salmos 27:4 - Uma coisa pedi ao Senhor, e a buscarei: que eu possa habitar na casa do Senhor todos os dias da minha vida, para contemplar a formosura do Senhor e aprender no seu templo.", // Dia 175
+        "Salmos 27:8 - Quando disseste: Buscai o meu rosto; o meu coração disse a ti: O teu rosto, Senhor, buscarei.", // Dia 176
+        "Salmos 27:14 - Espera no Senhor; anima-te, e ele fortalecerá o teu coração; espera, pois, no Senhor.", // Dia 177
+        "Salmos 28:8 - O Senhor é a força do seu povo; ele é a força salvadora do seu ungido.", // Dia 178
+        "Salmos 30:10 - Ouve, Senhor, e tem misericórdia de mim; Senhor, sê o meu ajudador.", // Dia 179
+        "Salmos 31:3 - Porque tu és a minha rocha e a minha fortaleza; assim, por amor do teu nome, guia-me e encaminha-me.", // Dia 180
+        "Salmos 31:7 - Eu me alegrarei e regozijarei na tua benignidade, pois consideraste a minha aflição; conheceste a minha alma nas angústias.", // Dia 181
+        "Salmos 31:14 - Mas eu confiei em ti, Senhor; disse: Tu és o meu Deus.", // Dia 182
+        "Salmos 32:7 - Tu és o meu esconderijo; preservas-me da angústia; de alegres cânticos de livramento me cercas.", // Dia 183
+        "Salmos 33:11 - O conselho do Senhor permanece para sempre; os intentos do seu coração, de geração em geração.", // Dia 184
+        "Salmos 33:18 - Eis que os olhos do Senhor estão sobre os que o temem, sobre os que esperam na sua misericórdia.", // Dia 185
+        "Salmos 33:22 - Seja a tua misericórdia, Senhor, sobre nós, como em ti esperamos.", // Dia 186
+        "Salmos 34:8 - Provai e vede que o Senhor é bom; bem-aventurado o homem que nele confia.", // Dia 187
+        "Salmos 34:10 - Os filhos dos leões necessitam e sofrem fome, mas aqueles que buscam ao Senhor de nada têm falta.", // Dia 188
+        "Salmos 34:18 - Perto está o Senhor dos que têm o coração quebrantado e salva os contritos de espírito.", // Dia 189
+        "Salmos 35:10 - Todos os meus ossos dirão: Senhor, quem é como tu, que livras o fraco do mais forte, o fraco e o pobre daquele que o rouba?", // Dia 190
+        "Salmos 36:5 - A tua misericórdia, Senhor, está nos céus, e a tua fidelidade chega até às mais excelsas nuvens.", // Dia 191
+        "Salmos 36:9 - Porque em ti está o manancial da vida; na tua luz veremos a luz.", // Dia 192
+        "Salmos 37:5 - Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.", // Dia 193
+        "Salmos 37:23 - Os passos de um homem bom são confirmados pelo Senhor, e ele deleita-se no seu caminho.", // Dia 194
+        "Salmos 37:31 - A lei do seu Deus está em seu coração; os seus passos não resvalarão.", // Dia 195
+        "Salmos 38:21 - Não me desampares, Senhor; Deus meu, não te alongues de mim.", // Dia 196
+        "Salmos 39:4 - Faze-me conhecer, Senhor, o meu fim, e qual a medida dos meus dias, para que eu sinta quão frágil sou.", // Dia 197
+        "Salmos 40:4 - Bem-aventurado o homem que põe no Senhor a sua confiança e não respeita os soberbos nem os que se desviam para a mentira.", // Dia 198
+        "Salmos 40:5 - Muitas são, Senhor, Deus meu, as maravilhas que tens operado para conosco, e os teus pensamentos não se podem contar diante de ti; ainda que eu os quisesse anunciar, e deles falar, são mais do que se podem contar.", // Dia 199
+        "Salmos 41:12 - Quanto a mim, tu me sustentas na minha integridade e me pões diante da tua face para sempre.", // Dia 200
+        "Salmos 42:11 - Por que estás abatida, ó minha alma, e por que te perturbas dentro de mim? Espera em Deus, pois ainda o louvarei, a ele que é o meu socorro presente e o meu Deus.", // Dia 201
+        "Salmos 43:3 - Envia a tua luz e a tua verdade, para que me guiem e me levem ao teu santo monte e aos teus tabernáculos.", // Dia 202
+        "Salmos 44:26 - Levanta-te para o nosso socorro e remi-nos por causa da tua benignidade.", // Dia 203
+        "Salmos 45:2 - És mais formoso do que os filhos dos homens; a graça se derramou em teus lábios; por isso Deus te abençoou para sempre.", // Dia 204
+        "Salmos 46:10 - Aquietai-vos e sabei que eu sou Deus; sou exaltado entre as nações, sou exaltado na terra.", // Dia 205
+        "Salmos 47:2 - Porque o Senhor Altíssimo é tremendo; é grande Rei sobre toda a terra.", // Dia 206
+        "Salmos 48:1 - Grande é o Senhor e mui digno de louvor, na cidade do nosso Deus, no seu santo monte.", // Dia 207
+        "Salmos 49:5 - Por que hei de temer nos dias maus, quando me cercar a iniquidade dos que se atrevem contra mim?", // Dia 208
+        "Salmos 50:15 - Invoca-me no dia da angústia; eu te livrarei, e tu me glorificarás.", // Dia 209
+        "Salmos 51:12 - Restitui-me a alegria da tua salvação e sustém-me com um espírito voluntário.", // Dia 210
+        "Salmos 52:9 - Louvar-te-ei para sempre, porque tu o fizeste, e esperarei no teu nome, porque é bom diante dos teus santos.", // Dia 211
+        "Salmos 53:5 - Ali haverá grande pavor, sem que houvesse motivo de pavor; porque Deus espalhará os ossos daquele que se acampa contra ti; tu os confundirás, porque Deus os rejeitou.", // Dia 212
+        "Salmos 54:6 - De vontade própria oferecerei sacrifícios a ti; louvarei o teu nome, ó Senhor, porque é bom.", // Dia 213
+        "Salmos 55:17 - De tarde e de manhã e ao meio-dia orarei; e clamarei, e ele ouvirá a minha voz.", // Dia 214
+        "Salmos 56:4 - Em Deus louvarei a sua palavra; em Deus pus a minha confiança; não temerei o que me possa fazer a carne.", // Dia 215
+        "Salmos 57:9 - Louvar-te-ei, Senhor, entre os povos; cantar-te-ei louvores entre as nações.", // Dia 216
+        "Salmos 58:10 - O justo se alegrará quando vir a vingança; lavará os seus pés no sangue do ímpio.", // Dia 217
+        "Salmos 59:9 - A sua força, a ti, eu a observarei, porque Deus é a minha defesa.", // Dia 218
+        "Salmos 60:5 - Para que os teus amados sejam livres, salva-nos com a tua destra e ouve-nos.", // Dia 219
+        "Salmos 61:3 - Porque tu és o meu refúgio, torre forte contra o inimigo.", // Dia 220
+        "Salmos 62:7 - Em Deus está a minha salvação e a minha glória; a rocha da minha fortaleza e o meu refúgio estão em Deus.", // Dia 221
+        "Salmos 63:7 - Porquanto tu tens sido o meu auxílio, à sombra das tuas asas eu canto alegremente.", // Dia 222
+        "Salmos 64:1 - Ouve, ó Deus, a minha voz na minha queixa; guarda a minha vida do horror do inimigo.", // Dia 223
+        "Salmos 65:5 - Com coisas tremendas em justiça nos responderás, ó Deus da nossa salvação; tu és a esperança de todos os termos da terra e do mais distante mar.", // Dia 224
+        "Salmos 66:10 - Pois tu, ó Deus, nos tens provado; tens nos refinado como se refina a prata.", // Dia 225
+        "Salmos 67:6 - Então a terra dará o seu fruto, e Deus, o nosso Deus, nos abençoará.", // Dia 226
+        "Salmos 68:5 - Pai dos órfãos e juiz das viúvas é Deus no seu lugar santo.", // Dia 227
+        "Salmos 69:6 - Não sejam envergonhados por minha causa aqueles que esperam em ti, ó Senhor, Deus dos Exércitos; não sejam confundidos por minha causa aqueles que te buscam, ó Deus de Israel.", // Dia 228
+        "Salmos 70:5 - Eu sou pobre e necessitado; apressa-te, ó Deus, em valer-me; tu és o meu auxílio e o meu libertador; Senhor, não te detenhas.", // Dia 229
+        "Salmos 71:3 - Sê tu a minha rocha de refúgio, à qual eu me acolha continuamente; deste ordem para que me salvem, porque tu és a minha rocha e a minha fortaleza.", // Dia 230
+        "Salmos 72:17 - O seu nome permanecerá eternamente; o seu nome se irá propagando de pais a filhos enquanto o sol durar, e os homens serão abençoados nele; todas as nações lhe chamarão bem-aventurado.", // Dia 231
+        "Salmos 73:25 - A quem tenho eu no céu senão a ti? E na terra não há quem eu deseje além de ti.", // Dia 232
+        "Salmos 74:16 - Teu é o dia, tua também é a noite; tu preparaste a luz e o sol.", // Dia 233
+        "Salmos 75:7 - Mas Deus é o juiz; a um abate, e a outro exalta.", // Dia 234
+        "Salmos 76:4 - Tu és mais ilustre e mais glorioso do que os montes de caça.", // Dia 235
+        "Salmos 77:13 - O teu caminho, ó Deus, está no santuário. Que deus é grande como o nosso Deus?", // Dia 236
+        "Salmos 78:38 - Mas ele, sendo compassivo, perdoou a sua iniquidade e não os destruiu; antes muitas vezes retirou a sua ira e não despertou todo o seu furor.", // Dia 237
+        "Salmos 79:13 - Nós, pois, teu povo e ovelhas de teu pasto, te louvaremos eternamente; de geração em geração cantaremos os teus louvores.", // Dia 238
+        "Salmos 80:3 - Ó Deus, restaura-nos; faze resplandecer o teu rosto, e seremos salvos.", // Dia 239
+        "Salmos 81:10 - Eu sou o Senhor, teu Deus, que te tirei da terra do Egito; abre bem a tua boca, e ta encherei.", // Dia 240
+        "Salmos 82:3 - Fazei justiça ao pobre e ao órfão; justificai o aflito e o necessitado.", // Dia 241
+        "Salmos 83:1 - Ó Deus, não te emudeças; não te cales nem te aquietes, ó Deus.", // Dia 242
+        "Salmos 84:5 - Bem-aventurado o homem cuja força está em ti, em cujo coração estão os caminhos aplanados.", // Dia 243
+        "Salmos 85:7 - Mostra-nos, Senhor, a tua misericórdia e concede-nos a tua salvação.", // Dia 244
+        "Salmos 86:15 - Mas tu, Senhor, és um Deus cheio de compaixão, e piedoso, sofredor e grande em benignidade e em verdade.", // Dia 245
+        "Salmos 87:5 - E de Sião se dirá: Este e aquele nasceram nela; e o próprio Altíssimo a estabelecerá.", // Dia 246
+        "Salmos 88:1 - Ó Senhor, Deus da minha salvação, dia e noite clamo diante de ti.", // Dia 247
+        "Salmos 89:8 - Ó Senhor, Deus dos Exércitos, quem é forte como tu, Senhor, com a tua fidelidade ao redor de ti?", // Dia 248
+        "Salmos 90:14 - Sacia-nos de manhã com a tua benignidade, para que nos regozijemos e nos alegremos todos os nossos dias.", // Dia 249
+        "Salmos 91:4 - Ele te cobrirá com as suas penas, e debaixo das suas asas estarás seguro; a sua verdade é escudo e broquel.", // Dia 250
+        "Salmos 92:4 - Pois me alegraste, Senhor, com os teus feitos; exultarei nas obras das tuas mãos.", // Dia 251
+        "Salmos 93:2 - O teu trono está firme desde então; tu existes desde a eternidade.", // Dia 252
+        "Salmos 94:22 - Mas o Senhor se me tornou em alto refúgio; o meu Deus é a rocha do meu abrigo.", // Dia 253
+        "Salmos 95:6 - Ó, vinde, adoremos e prostremo-nos; ajoelhemos diante do Senhor, que nos criou.", // Dia 254
+        "Salmos 96:4 - Porque o Senhor é grande e mui digno de louvor; mais temível é do que todos os deuses.", // Dia 255
+        "Salmos 97:12 - Alegrai-vos, justos, no Senhor e dai louvores à memória da sua santidade.", // Dia 256
+        "Salmos 98:3 - Lembrou-se da sua benignidade e da sua verdade para com a casa de Israel; todos os termos da terra viram a salvação do nosso Deus.", // Dia 257
+        "Salmos 99:9 - Exaltai ao Senhor, nosso Deus, e prostrai-vos no seu santo monte, porque o Senhor, nosso Deus, é santo.", // Dia 258
+        "Salmos 100:3 - Sabei que o Senhor é Deus; foi ele que nos fez, e não nós a nós mesmos; somos povo seu e ovelhas do seu pasto.", // Dia 259
+        "Salmos 101:6 - Os meus olhos estarão sobre os fiéis da terra, para que se assentem comigo; o que anda num caminho reto, esse me servirá.", // Dia 260
+        "Salmos 102:27 - Mas tu és o mesmo, e os teus anos não terão fim.", // Dia 261
+        "Salmos 103:2 - Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum dos seus benefícios.", // Dia 262
+        "Salmos 104:24 - Ó Senhor, quão variadas são as tuas obras! Todas as coisas fizeste com sabedoria; a terra está cheia das tuas riquezas.", // Dia 263
+        "Salmos 105:4 - Buscai ao Senhor e a sua força; buscai a sua face continuamente.", // Dia 264
+        "Salmos 106:48 - Bendito seja o Senhor, Deus de Israel, de eternidade em eternidade; e todo o povo diga: Amém. Louvai ao Senhor.", // Dia 265
+        "Salmos 107:8 - Louvem ao Senhor pela sua bondade e pelas suas maravilhas para com os filhos dos homens!", // Dia 266
+        "Salmos 108:13 - Com Deus faremos proezas, porque ele é que pisará os nossos inimigos.", // Dia 267
+        "Salmos 109:26 - Ajuda-me, Senhor, Deus meu; salva-me segundo a tua benignidade.", // Dia 268
+        "Salmos 110:1 - Disse o Senhor ao meu Senhor: Assenta-te à minha mão direita, até que eu ponha os teus inimigos por escabelo dos teus pés.", // Dia 269
+        "Salmos 111:10 - O temor do Senhor é o princípio da sabedoria; têm bom entendimento todos os que cumprem os seus mandamentos; o seu louvor permanece para sempre.", // Dia 270
+        "Salmos 112:4 - Aos justos nasce luz nas trevas; ele é compassivo, misericordioso e justo.", // Dia 271
+        "Salmos 113:7 - Levanta o pobre do pó e do monturo levanta o necessitado.", // Dia 272
+        "Salmos 114:8 - O qual converteu a rocha em lençóis de água, a pederneira em mananciais.", // Dia 273
+        "Salmos 115:18 - Nós, porém, bendiremos ao Senhor, desde agora e para sempre. Louvai ao Senhor.", // Dia 274
+        "Salmos 116:7 - Retorna, ó minha alma, ao teu repouso, pois o Senhor te fez bem.", // Dia 275
+        "Salmos 117:2 - Porque a sua benignidade é grande para conosco, e a verdade do Senhor dura para sempre. Louvai ao Senhor.", // Dia 276
+        "Salmos 118:6 - O Senhor está comigo; não temerei o que me pode fazer o homem.", // Dia 277
+        "Salmos 119:20 - A minha alma está consumida pelo desejo dos teus juízos em todo o tempo.", // Dia 278
+        "Salmos 119:27 - Faze-me entender o caminho dos teus preceitos; assim falarei das tuas maravilhas.", // Dia 279
+        "Salmos 119:32 - Correrei pelo caminho dos teus mandamentos, quando dilatares o meu coração.", // Dia 280
+        "Salmos 119:41 - Venham sobre mim as tuas misericórdias, para que eu viva, pois a tua lei é o meu deleite.", // Dia 281
+        "Salmos 119:49 - Lembra-te da palavra dada ao teu servo, na qual me fizeste esperar.", // Dia 282
+        "Salmos 119:67 - Antes de ser afligido, andava errado; mas agora guardo a tua palavra.", // Dia 283
+        "Salmos 119:74 - Os que te temem me verão e se alegrarão, porque tenho esperado na tua palavra.", // Dia 284
+        "Salmos 119:81 - Desfalece a minha alma, esperando na tua salvação; espero na tua palavra.", // Dia 285
+        "Salmos 119:103 - Quão doces são as tuas palavras ao meu paladar! Mais doces do que o mel à minha boca.", // Dia 286
+        "Salmos 119:114 - Tu és o meu refúgio e o meu escudo; espero na tua palavra.", // Dia 287
+        "Salmos 119:116 - Sustenta-me conforme a tua palavra, para que viva; e não me deixes envergonhado da minha esperança.", // Dia 288
+        "Salmos 119:124 - Faze ao teu servo bem segundo a tua palavra, para que aprenda os teus estatutos.", // Dia 289
+        "Salmos 119:135 - Faze resplandecer o teu rosto sobre o teu servo e ensina-me os teus estatutos.", // Dia 290
+        "Salmos 119:147 - Antecipei-me à alva da manhã e clamei; esperei na tua palavra.", // Dia 291
+        "Salmos 119:160 - A soma da tua palavra é a verdade, e cada uma das tuas justas ordenanças dura para sempre.", // Dia 292
+        "Salmos 119:165 - Muita paz têm os que amam a tua lei, e para eles não há tropeço.", // Dia 293
+        "Salmos 119:175 - Viva a minha alma e louve-te, e ajudem-me os teus juízos.", // Dia 294
+        "Salmos 120:1 - Na minha angústia clamei ao Senhor, e ele me ouviu.", // Dia 295
+        "Salmos 121:3 - Não deixará vacilar o teu pé; aquele que te guarda não tosquenejará.", // Dia 296
+        "Salmos 122:6 - Orai pela paz de Jerusalém; prosperarão aqueles que te amam.", // Dia 297
+        "Salmos 123:2 - Eis que assim como os olhos dos servos atentam para as mãos dos seus senhores, e os olhos da serva para as mãos de sua senhora, assim os nossos olhos atentam para o Senhor, nosso Deus, até que se compadeça de nós.", // Dia 298
+        "Salmos 124:6 - Bendito seja o Senhor, que não nos deu por presa aos seus dentes.", // Dia 299
+        "Salmos 125:3 - Porque o cetro da impiedade não permanecerá sobre a sorte dos justos, para que o justo não estenda as suas mãos para a iniquidade.", // Dia 300
+        "Salmos 126:5 - Os que semeiam em lágrimas segarão com alegria.", // Dia 301
+        "Salmos 127:2 - Inútil vos será levantar de madrugada, repousar tarde, comer o pão de dores, pois assim dá ele aos seus amados o sono.", // Dia 302
+        "Salmos 128:4 - Eis que assim será abençoado o homem que teme ao Senhor.", // Dia 303
+        "Salmos 129:2 - Muito me angustiaram desde a minha mocidade; mas não prevaleceram contra mim.", // Dia 304
+        "Salmos 130:7 - Espere Israel no Senhor, pois no Senhor há misericórdia, e nele há abundante redenção.", // Dia 305
+        "Salmos 131:1 - Senhor, o meu coração não é altivo, nem os meus olhos são elevados; não me ocupo de assuntos grandes e maravilhosos demais para mim.", // Dia 306
+        "Salmos 132:8 - Levanta-te, Senhor, para o teu repouso, tu e a arca da tua força.", // Dia 307
+        "Salmos 133:3 - Como o orvalho de Hermom, que desce sobre os montes de Sião, porque ali o Senhor ordena a bênção e a vida para sempre.", // Dia 308
+        "Salmos 134:3 - O Senhor te abençoe desde Sião, aquele que fez os céus e a terra.", // Dia 309
+        "Salmos 135:6 - Tudo o que o Senhor quis, ele o fez, nos céus e na terra, nos mares e em todos os abismos.", // Dia 310
+        "Salmos 136:23 - Que se lembrou da nossa baixeza; porque a sua benignidade dura para sempre.", // Dia 311
+        "Salmos 137:5 - Se eu me esquecer de ti, ó Jerusalém, que se resseque a minha mão direita.", // Dia 312
+        "Salmos 138:7 - Se andar no meio da angústia, tu me reviverás; estenderás a tua mão contra a ira dos meus inimigos, e a tua destra me salvará.", // Dia 313
+        "Salmos 139:14 - Eu te louvarei, porque de um modo assombroso e tão maravilhoso fui formado; maravilhosas são as tuas obras, e a minha alma o sabe muito bem.", // Dia 314
+        "Salmos 140:12 - Sei que o Senhor manterá a causa do aflito e o direito do necessitado.", // Dia 315
+        "Salmos 141:2 - Suba a minha oração perante a tua face como incenso, e as minhas mãos levantadas sejam como o sacrifício da tarde.", // Dia 316
+        "Salmos 142:3 - Quando dentro de mim esmorece o meu espírito, tu conheces a minha vereda; no caminho em que ando, ocultaram-me um laço.", // Dia 317
+        "Salmos 143:10 - Ensina-me a fazer a tua vontade, pois és o meu Deus; guie-me o teu bom Espírito por terreno plano.", // Dia 318
+        "Salmos 144:15 - Bem-aventurado o povo a quem assim sucede; bem-aventurado é o povo cujo Deus é o Senhor.", // Dia 319
+        "Salmos 145:18 - Perto está o Senhor de todos os que o invocam, de todos os que o invocam em verdade.", // Dia 320
+        "Salmos 146:5 - Bem-aventurado aquele que tem o Deus de Jacó por seu auxílio, cuja esperança está no Senhor, seu Deus.", // Dia 321
+        "Salmos 147:3 - Sara os quebrantados de coração e lhes ata as feridas.", // Dia 322
+        "Salmos 148:5 - Louvem o nome do Senhor, pois mandou ele, e foram criados.", // Dia 323
+        "Salmos 149:4 - Porque o Senhor se agrada do seu povo; ornará os mansos com a salvação.", // Dia 324
+        "Salmos 150:6 - Tudo o que tem fôlego louve ao Senhor. Louvai ao Senhor.", // Dia 325
+        "Salmos 1:3 - Pois será como a árvore plantada junto a ribeiros de águas, a qual dá o seu fruto no seu tempo; as suas folhas não cairão, e tudo quanto fizer prosperará.", // Dia 326
+        "Salmos 2:8 - Pede-me, e eu te darei os gentios por herança e os fins da terra por tua possessão.", // Dia 327
+        "Salmos 3:3 - Mas tu, Senhor, és um escudo para mim, a minha glória e o que exalta a minha cabeça.", // Dia 328
+        "Salmos 4:3 - Sabei, pois, que o Senhor separou para si aquele que é piedoso; o Senhor ouvirá quando eu clamar a ele.", // Dia 329
+        "Salmos 5:11 - Mas alegrem-se todos os que confiam em ti; exultem eternamente, porquanto tu os defendes; e em ti se gloriem os que amam o teu nome.", // Dia 330
+        "Salmos 6:4 - Volta-te, Senhor, livra a minha alma; salva-me por tua misericórdia.", // Dia 331
+        "Salmos 7:17 - Louvarei ao Senhor conforme a sua justiça, e cantarei louvores ao nome do Senhor Altíssimo.", // Dia 332
+        "Salmos 8:9 - Ó Senhor, Senhor nosso, quão admirável é o teu nome sobre toda a terra!", // Dia 333
+        "Salmos 9:10 - E em ti confiarão os que conhecem o teu nome, porque tu, Senhor, nunca desamparaste os que te buscam.", // Dia 334
+        "Salmos 10:16 - O Senhor é Rei eterno; da sua terra perecerão as nações.", // Dia 335
+        "Salmos 11:5 - O Senhor prova o justo, porém ao ímpio e ao que ama a violência odeia a sua alma.", // Dia 336
+        "Salmos 12:7 - Tu, Senhor, os guardarás; desta geração os livrarás para sempre.", // Dia 337
+        "Salmos 13:6 - Cantarei ao Senhor, porquanto me tem feito muito bem.", // Dia 338
+        "Salmos 14:7 - Oh! Se de Sião já viesse a salvação de Israel! Quando o Senhor fizer voltar os cativos do seu povo, então se regozijará Jacó, e Israel se alegrará.", // Dia 339
+        "Salmos 15:5 - Aquele que não empresta o seu dinheiro com usura, nem recebe peitas contra o inocente; quem faz isto nunca será abalado.", // Dia 340
+        "Salmos 16:11 - Tu me farás ver a vereda da vida; na tua presença há fartura de alegrias; à tua mão direita há delícias perpetuamente.", // Dia 341
+        "Salmos 17:7 - Mostra a tua maravilhosa benignidade, ó tu, que livras os que confiam em ti, daqueles que se levantam contra a tua destra.", // Dia 342
+        "Salmos 18:30 - O caminho de Deus é perfeito; a palavra do Senhor é provada; é um escudo para todos os que nele confiam.", // Dia 343
+        "Salmos 19:14 - Sejam agradáveis as palavras da minha boca e a meditação do meu coração perante a tua face, Senhor, Rocha minha e Redentor meu!", // Dia 344
+        "Salmos 20:5 - Nós nos alegraremos em tua salvação, e em nome do nosso Deus arvoraremos pendões; satisfaça o Senhor a todas as tuas petições.", // Dia 345
+        "Salmos 21:2 - Desejou o seu coração, e não lho negaste; não negaste ao seu coração a petição dos seus lábios.", // Dia 346
+        "Salmos 22:22 - Anunciarei o teu nome a meus irmãos; louvar-te-ei no meio da congregação.", // Dia 347
+        "Salmos 23:6 - Certamente que a bondade e a misericórdia me seguirão todos os dias da minha vida, e habitarei na casa do Senhor por longos dias.", // Dia 348
+        "Salmos 24:8 - Quem é o Rei da Glória? O Senhor forte e poderoso, o Senhor poderoso na guerra.", // Dia 349
+        "Salmos 25:21 - Guarde-me a integridade e a retidão, pois espero em ti.", // Dia 350
+        "Salmos 26:11 - Quanto a mim, porém, andarei na minha integridade; resgata-me e tem misericórdia de mim.", // Dia 351
+        "Salmos 27:13 - Creio que verei a bondade do Senhor na terra dos viventes.", // Dia 352
+        "Salmos 28:9 - Salva o teu povo e abençoa a tua herança; e apascenta-os e exalta-os para sempre.", // Dia 353
+        "Salmos 29:11 - O Senhor dará força ao seu povo; o Senhor abençoará o seu povo com paz.", // Dia 354
+        "Salmos 30:11 - Converteste o meu pranto em folguedo; desataste o meu pano de saco e me cingiste de alegria.", // Dia 355
+        "Salmos 31:19 - Oh! Quão grande é a tua bondade, que guardaste para os que te temem, a qual operaste para aqueles que em ti confiam, na presença dos filhos dos homens!", // Dia 356
+        "Salmos 32:10 - Muitas dores virão ao ímpio, mas aquele que confia no Senhor, a misericórdia o cercará.", // Dia 357
+        "Salmos 33:20 - A nossa alma espera no Senhor; ele é o nosso auxílio e o nosso escudo.", // Dia 358
+        "Salmos 34:22 - O Senhor resgata a alma dos seus servos, e nenhum dos que nele confiam será condenado.", // Dia 359
+        "Salmos 35:28 - E a minha língua falará da tua justiça e do teu louvor todo o dia.", // Dia 360
+        "Salmos 36:8 - Far-se-ão abundantes das grosuras da tua casa, e dos ribeiros das tuas delícias os fartarás.", // Dia 361
+        "Salmos 37:40 - E o Senhor os ajudará e os livrará; ele os livrará dos ímpios e os salvará, porquanto nele confiam.", // Dia 362
+        "Salmos 38:15 - Porque em ti, Senhor, espero; tu responderás, Senhor, Deus meu.", // Dia 363
+        "Salmos 39:7 - Agora, pois, Senhor, que espero eu? A minha esperança está em ti.", // Dia 364
+        "Salmos 150:6 - Tudo o que tem fôlego louve ao Senhor. Louvai ao Senhor. Que este ano termine e o próximo comece com seu coração cheio de gratidão a Deus, e seu sorriso irradiando a paz que só Ele pode dar.", // Dia 365
+    ];
+
+    // --- LÓGICA DE EXIBIÇÃO ---
+    function exibirMensagem() {
+        const nomeParaExibir = nomeDoPresenteado.trim();
+
+        if (!nomeParaExibir) {
+            document.getElementById('mensagem').innerHTML = "ERRO: Por favor, preencha o nome na Linha 6 do script antes de salvar o arquivo!";
+            document.getElementById('dia-do-ano').innerText = "Personalização Necessária";
+            return;
+        }
+
+        const agora = new Date();
+        const inicioDoAno = new Date(agora.getFullYear(), 0, 1);
+        const diferencaEmMilissegundos = agora - inicioDoAno;
+        const umDiaEmMilissegundos = 1000 * 60 * 60 * 24; 
+        
+        // Corrigindo para o último dia do ano, se necessário.
+        let diaDoAno = Math.floor(diferencaEmMilissegundos / umDiaEmMilissegundos) + 1;
+        
+        const indiceDaFrase = (diaDoAno - 1) % frasesSalmos.length;
+
+        const fraseDoDia = frasesSalmos[indiceDaFrase] || "O Senhor é o meu pastor; nada me faltará.";
+
+        const mensagemCompleta = `${nomeParaExibir}, ${fraseDoDia}`;
+
+        document.getElementById('mensagem').innerText = mensagemCompleta;
+        document.getElementById('dia-do-ano').innerText = `Salmos do Dia ${diaDoAno}`;
+    }
+
+    exibirMensagem();
+</script>
+
+</body>
+</html>
